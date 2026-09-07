@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ticketing
+    username: ticketing
+    password: ticketing
+    hikari:
+      maximum-pool-size: 60
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+  flyway:
+    enable: true
+    default-schema: public
+    locations: classpath:db/migration
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
+  application:
+    name: ticketing
